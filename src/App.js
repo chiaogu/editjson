@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import styled from "styled-components";
+import ParserEditor from "./ParserEditor";
+import Parser from "./Parser";
 
-function App() {
+const DEFAULT_PARSER = new Parser(function parse(data) {
+  return data;
+});
+
+export default function App() {
+  const [parser, setParser] = useState(DEFAULT_PARSER);
+
+  function onParserChange(newParser) {
+    setParser(newParser);
+    console.log("App", newParser.parse({ foo: "bar" }));
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Root>
+      <ParserEditor {...{ parser, onParserChange }} />
+      <Result />
+    </Root>
   );
 }
 
-export default App;
+const Root = styled.div`
+  display: flex;
+`;
+
+const Result = styled.div``;
