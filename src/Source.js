@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from "react";
 import AceEditor from "react-ace";
-import Parser from "./Parser";
 
-export default function ParserEditor({ isPortraitMode, parser, onError, onParserChange }) {
+export default function ParserEditor({
+  isPortraitMode,
+  data,
+  onError,
+  onDataChange
+}) {
   const [editorValue, setEditorValue] = useState();
 
-  useEffect(() => setEditorValue(parser.toString()), [parser]);
+  useEffect(() => setEditorValue(JSON.stringify(data, null, 2)), [data]);
 
   function onChange(newValue) {
     setEditorValue(newValue + "");
 
     try {
-      const parser = new Parser(newValue);
-      onParserChange(parser);
+      const data = JSON.parse(newValue);
+      onDataChange(data);
       onError();
     } catch (e) {
       onError(e);
@@ -30,7 +34,7 @@ export default function ParserEditor({ isPortraitMode, parser, onError, onParser
       setOptions={{ tabSize: 2 }}
       style={{
         width: `${isPortraitMode ? 100 : 50}vw`,
-        height: `${isPortraitMode ? 50 : 100}vh`
+        height: `${isPortraitMode ? 50 : 50}vh`
       }}
     />
   );

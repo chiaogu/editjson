@@ -1,7 +1,12 @@
+const mockDataProxyHandler = {
+  get: () => new Proxy({}, mockDataProxyHandler)
+}
+
 export default class Parser {
   constructor(func) {
-    func({});
-    this.parse = func;
+    this.parse = eval(`(${func})`);
+    const mockData = new Proxy({}, mockDataProxyHandler);
+    this.parse(mockData);
   }
 
   toString() {
