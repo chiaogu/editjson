@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
 import AceEditor from "react-ace";
 import "brace/mode/javascript";
 import "brace/theme/monokai";
 import Parser from "./Parser";
 
-export default function ParserEditor({ parser, onParserChange }) {
-  const [error, setError] = useState();
+export default function ParserEditor({ isPortraitMode, parser, onError, onParserChange }) {
   const [editorValue, setEditorValue] = useState();
 
   useEffect(() => setEditorValue(parser.toString()), [parser]);
@@ -17,42 +15,25 @@ export default function ParserEditor({ parser, onParserChange }) {
     try {
       const parser = new Parser(eval(`(${newValue})`));
       onParserChange(parser);
-      setError();
+      onError();
     } catch (e) {
-      setError(e);
+      onError(e);
     }
   }
 
   return (
-    <Root>
-      <AceEditor
-        placeholder="Placeholder Text"
-        mode="javascript"
-        theme="monokai"
-        name="blah2"
-        onChange={onChange}
-        fontSize={14}
-        showPrintMargin={true}
-        showGutter={true}
-        highlightActiveLine={true}
-        debounceChangePeriod={1000}
-        value={editorValue}
-        editorProps={{ $blockScrolling: true }}
-        setOptions={{
-          showLineNumbers: true,
-          tabSize: 2
-        }}
-        style={{
-          width: "50vw",
-          height: "100vh"
-        }}
-      />
-      {error && <div>{error.message}</div>}
-    </Root>
+    <AceEditor
+      onChange={onChange}
+      value={editorValue}
+      mode="javascript"
+      theme="monokai"
+      fontSize={14}
+      debounceChangePeriod={1000}
+      setOptions={{ tabSize: 2 }}
+      style={{
+        width: `${isPortraitMode ? 100 : 50}vw`,
+        height: `${isPortraitMode ? 50 : 100}vh`
+      }}
+    />
   );
 }
-
-const Root = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
