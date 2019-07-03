@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/chiaogu/editjson/static/js/main.4d7b96f3.chunk.js",
-    "main.js.map": "/chiaogu/editjson/static/js/main.4d7b96f3.chunk.js.map",
-    "runtime~main.js": "/chiaogu/editjson/static/js/runtime~main.a34b0c58.js",
-    "runtime~main.js.map": "/chiaogu/editjson/static/js/runtime~main.a34b0c58.js.map",
-    "static/js/2.17851729.chunk.js": "/chiaogu/editjson/static/js/2.17851729.chunk.js",
-    "static/js/2.17851729.chunk.js.map": "/chiaogu/editjson/static/js/2.17851729.chunk.js.map",
-    "index.html": "/chiaogu/editjson/index.html",
-    "precache-manifest.805a9b323282a0d1d299999105c49543.js": "/chiaogu/editjson/precache-manifest.805a9b323282a0d1d299999105c49543.js",
-    "service-worker.js": "/chiaogu/editjson/service-worker.js"
+    "main.js": "/editjson/static/js/main.4d7b96f3.chunk.js",
+    "main.js.map": "/editjson/static/js/main.4d7b96f3.chunk.js.map",
+    "runtime~main.js": "/editjson/static/js/runtime~main.db320d0d.js",
+    "runtime~main.js.map": "/editjson/static/js/runtime~main.db320d0d.js.map",
+    "static/js/2.c4fe65d2.chunk.js": "/editjson/static/js/2.c4fe65d2.chunk.js",
+    "static/js/2.c4fe65d2.chunk.js.map": "/editjson/static/js/2.c4fe65d2.chunk.js.map",
+    "index.html": "/editjson/index.html",
+    "precache-manifest.11b98e7bf5c2ba074e2f1d109f91b3c9.js": "/editjson/precache-manifest.11b98e7bf5c2ba074e2f1d109f91b3c9.js",
+    "service-worker.js": "/editjson/service-worker.js"
   }
 }
